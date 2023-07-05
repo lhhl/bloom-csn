@@ -1,0 +1,55 @@
+<button id="startBtn">Start Listening</button>
+<p id="result"></p>
+<input type="text" id="text" />
+
+<script>
+  let pointTime = false;
+  // Check browser support for the Web Speech API
+  if ("webkitSpeechRecognition" in window) {
+    var recognition = new webkitSpeechRecognition();
+
+    // Set recognition parameters
+    recognition.continuous = true; // Enable continuous recognition
+    recognition.interimResults = false; // Enable interim results
+    recognition.lang = "vi-VN";
+
+    // Start speech recognition
+    document.getElementById("startBtn").addEventListener("click", function() {
+      recognition.start();
+    });
+
+    // Process recognized speech
+    recognition.onresult = function(event) {
+      var result = "";
+      for (var i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          result += event.results[i][0].transcript;
+        }
+      }
+      document.getElementById("result").textContent = result;
+      result = result.trim();      
+      console.log(result)
+      console.log(result == 'ghi điểm')
+      if (result == 'ghi điểm') {
+        pointTime = true;
+        return;
+      }
+
+      if (result == 'xong') {
+        pointTime = false;
+        return;
+      }
+
+      
+      pointTime && (document.getElementById("text").value = result);
+    };
+
+    // Handle errors
+    recognition.onerror = function(event) {
+      console.error("Speech recognition error:", event.error);
+    };
+  } else {
+    // Web Speech API not supported
+    console.error("Web Speech API is not supported in this browser.");
+  }
+</script>

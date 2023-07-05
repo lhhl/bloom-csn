@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "bloom-csn",
+    "bloom-csn": "bloom-csn"
+  },
+  "targets": {},
+  "etags": {}
+}

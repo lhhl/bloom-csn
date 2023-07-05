@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Points Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="scripts.js"></script>
+</head>
+<body>
+  <div id="text"></div>
+  <div class="container mx-auto py-2">
+  <div class="flex flex-wrap justify-center mb-4" id="playersForm">
+    <div class="w-full md:w-1/4 px-2">
+      <input id="playerA" class="w-full mb-2 px-4 py-2 border border-gray-300 rounded" type="text" placeholder="Player A">
+    </div>
+    <div class="w-full md:w-1/4 px-2">
+      <input id="playerB" class="w-full mb-2 px-4 py-2 border border-gray-300 rounded" type="text" placeholder="Player B">
+    </div>
+    <div class="w-full md:w-1/4 px-2">
+      <input id="playerC" class="w-full mb-2 px-4 py-2 border border-gray-300 rounded" type="text" placeholder="Player C">
+    </div>
+    <div class="w-full md:w-1/4 px-2">
+      <input id="playerD" class="w-full mb-2 px-4 py-2 border border-gray-300 rounded" type="text" placeholder="Player D">
+    </div>
+    <div class="w-full px-2">
+      <button id="startButton" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" type="button">Start Game</button>
+    </div>
+  </div>
+  
+
+  <div id="gameSection" class="hidden m-2">
+
+    <table id="pointsTable" class="border-collapse table-fixed w-full text-sm">
+      <thead class="text-xl">
+      </thead>
+      <tbody class="text-xl"></tbody>
+      
+      <tfoot class="hidden text-xl"></tfoot>
+      <thead class="head2 text-xl"></thead>
+    </table>
+
+    <div id="payment" class="bg-blue-100 text-black border-2 border-blue-300 p-4 mt-2 hidden"></div>
+    <div id="errorBoard" class="bg-red-500 text-white text-center p-4 my-4 hidden"></div>
+    <div class="w-full md:w-1/2 mt-5">
+      <input type="text" id="pointsTextarea" class="w-full mb-2 px-4 py-2 border border-gray-300 rounded" placeholder="Enter Points - Format: A 1 B 2 C 3" />
+    </div>
+
+    <div class="w-full md:w-1/2 mt-2 text-xl font-bold">
+      Total games: <span id="gameCount">0</span>
+    </div>
+
+    <div class="mt-2 mt-30">
+      <button id="resetButton" class="mt-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" type="button">Reset Game</button>
+      <button id="restartGame" class="mt-1 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" type="button">Restart Game</button>
+      <button id="showTotal" class="mt-1 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" type="button">Display Total</button>
+      <button id="showPayment" class="mt-1 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" type="button">Generate Payment</button>
+    </div>
+  </div>
+  
+</div>
+
+<!-- Modal -->
+<div id="pointsModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-screen h-screen">
+    <table id="setOfPoints" class="m-10 text-6xl mx-auto">
+      <tbody>
+      </tbody>
+    </table>
+    <button id="rejectPoints" class="w-full fixed bg-red-500 text-white text-6xl py-10 bottom-0 rounded mx-auto">Reject</button>
+  </div>
+</div>
+</body>
+</html>
